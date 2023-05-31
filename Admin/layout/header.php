@@ -145,7 +145,7 @@
                         <div class="left-sidebar-content">
                             <ul class="sidebar-elements">
                                 <li class="divider">Menu</li>
-                                <li class="active"><a href="index.html"><i
+                                <li class="active"><a href="dashboard.php"><i
                                             class="icon mdi mdi-home"></i><span>Dashboard</span></a>
                                 </li>
                                 <!-- <li class="parent"><a href="charts.html"><i
@@ -158,7 +158,7 @@
                                 <li class="parent"><a href="#"><i class="icon mdi mdi-border-all"></i><span>Quản
                                             lý</span></a>
                                     <ul class="sub-menu">
-                                        <li><a href="loai_hang.php">Loại hàng</a>
+                                        <li><a href="categories.php">Loại hàng</a>
                                         </li>
                                         <li><a href="products.php">Sản phẩm</a>
                                         </li>

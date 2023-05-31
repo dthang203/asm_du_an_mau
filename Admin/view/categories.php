@@ -1,20 +1,19 @@
 <?php
-include "layout/header.php";
-include "model/config.php";
-$query = "select *,loai_hang.ten_loai_hang from hang join loai_hang on  hang.id_loai_hang = loai_hang.id_loai_hang";
-$hang = getAll($query);
+include "../layout/header.php";
+include "../model/config.php";
+$query = "select * from loai_hang";
+$loai_hang = getAll($query);
 ?>
-
 </div>
 </div>
 <div class="be-content">
     <div class="page-head">
-        <h2 class="page-head-title">Quản lý sản phẩm</h2>
+        <h2 class="page-head-title">Loại hàng</h2>
         <nav aria-label="breadcrumb" role="navigation">
             <ol class="breadcrumb page-head-nav">
                 <li class="breadcrumb-item"><a href="admin.php">Trang chủ</a></li>
                 <li class="breadcrumb-item"><a href="admin.php">Bảng</a></li>
-                <li class="breadcrumb-item active">Sản phẩm</li>
+                <li class="breadcrumb-item active">Loại hàng</li>
             </ol>
         </nav>
     </div>
@@ -22,47 +21,32 @@ $hang = getAll($query);
         <div class="row">
             <div class="col-sm-10">
                 <div class="card card-table" style="display:inline-block ;">
-                    <div class="card-header">
-                        <div class="btn" style="margin-left: 1000px; width: 200px"><a href="add_hang.php"><button>Thêm
-                                    Sản phẩm</button></a></div>
-                    </div>
+
+                    <div class="btn" style="margin-left: 1030px; width: 200px; margin-top: 20px"><a
+                            href="add_cate.php"><button>Thêm Loại
+                                Hàng</button></a></div>
+
                     <div class="card-body">
                         <table class="table table-striped table-hover table-fw-widget" id="table1">
                             <thead>
                                 <tr>
-                                    <th>Tên sản phẩm</th>
-                                    <th>Hình ảnh</th>
-                                    <th>Giá</th>
-                                    <th>Ngày nhập</th>
-                                    <th>Số lượng</th>
-                                    <th>Mô tả</th>
-                                    <th>Loai_hang</th>
-                                    <th>Actions</th>
+                                    <th>Tên loại hàng</th>
+                                    <th class="center">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($hang as  $value) : ?>
+                                <?php foreach ($loai_hang as $value) : ?>
                                 <tr class="odd gradeX">
-                                    <td style="width: 150px;"><?php echo $value["ten_hang"]?></td>
-                                    <td>
-                                        <img src="assets/images/product/<?php echo $value['hinh_anh'] ?>" alt=""
-                                            style="width:100px;">
-                                    </td>
-                                    <td><?php echo $value["gia"]?></td>
-                                    <td class="center"><?php echo $value["ngay_nhap"]?></td>
-                                    <td class="center"><?php echo $value["so_luong"]?></td>
-                                    <td class="center" style="width: 330px;"><?php echo $value["mo_ta"]?></td>
-                                    <td class="center"><?php echo $value["ten_loai_hang"]?></td>
+                                    <td><?php echo $value["ten_loai_hang"] ?></td>
                                     <td class="center">
-                                        <a href="update_hang.php?id=<?php echo $value["id"] ?>"><button
+                                        <a href="update_cate.php?id=<?php echo $value["id_loai_hang"] ?>"><button
                                                 class="update">Update</button></a>
                                         <a onclick="return confirm('Bạn có chắc muốn xóa ??')"
-                                            href="./controller/product/delete_hang.php?id=<?php echo $value["id"] ?>"><button
+                                            href="./controller/cate/delete_cate.php?id=<?php echo $value["id_loai_hang"] ?>"><button
                                                 class="delete">Delete</button></a>
                                     </td>
                                 </tr>
                                 <?php endforeach ?>
-
                             </tbody>
                         </table>
                     </div>
@@ -71,7 +55,7 @@ $hang = getAll($query);
         </div>
 
 
-        <!-- <nav class="be-right-sidebar">
+        <nav class="be-right-sidebar">
             <div class="sb-content">
                 <div class="tab-navigation">
                     <ul class="nav nav-tabs nav-justified" role="tablist">
@@ -214,7 +198,7 @@ $hang = getAll($query);
                                                             class="delete mdi mdi-delete"></span>
                                                         <input class="custom-control-input" type="checkbox" id="tck4">
                                                         <label class="custom-control-label" for="tck4">Initialize the
-                                                            project</label>
+                                                            project </label>
                                                     </div>
                                                 </li>
                                                 <li>
@@ -315,7 +299,7 @@ $hang = getAll($query);
                     </div>
                 </div>
             </div>
-        </nav> -->
+        </nav>
     </div>
     <script src="assets\lib\jquery\jquery.min.js" type="text/javascript"></script>
     <script src="assets\lib\perfect-scrollbar\js\perfect-scrollbar.min.js" type="text/javascript"></script>
