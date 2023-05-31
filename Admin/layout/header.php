@@ -162,8 +162,8 @@
                                         </li>
                                         <li><a href="products.php">Sản phẩm</a>
                                         </li>
-                                        <li><a href="user.php">Người dùng</a>
-                                        <li><a href="cmt.php">Bình luận</a>
+                                        <li><a href="users.php">Người dùng</a>
+                                        <li><a href="comments.php">Bình luận</a>
                                         </li>
                                 </li>
                                 <!-- <li><a href="hoa_don.php">Hóa đơn</a>
