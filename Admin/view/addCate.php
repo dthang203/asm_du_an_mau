@@ -1,8 +1,24 @@
 <?php
 include "../layout/header.php";
 include "../model/config.php";
-$query = "select * from loai_hang";
-$loai_hang = getAll($query);
+$err ="";
+if (isset($_POST["add_cate"]))  {
+    $name_cate = $_POST["name"];
+    $err="";
+    if ($name_cate == '') {
+        $err = 'Vui lòng không bỏ trống';
+        
+    } 
+    else {
+        $err = "";
+        $query = "insert into loai_hang(ten_loai_hang) values('$name_cate ') ";
+        connect($query);
+        
+        $yourURL = "http://localhost/Admin/view/categories.php";
+        echo ("<script>location.href='$yourURL'</script>");
+    }
+}
+?>
 ?>
 </div>
 </div>
@@ -12,46 +28,38 @@ $loai_hang = getAll($query);
         <nav aria-label="breadcrumb" role="navigation">
             <ol class="breadcrumb page-head-nav">
                 <li class="breadcrumb-item"><a href="admin.php">Trang chủ</a></li>
-                <li class="breadcrumb-item"><a href="admin.php">Bảng</a></li>
-                <li class="breadcrumb-item active">Loại hàng</li>
+                <li class="breadcrumb-item"><a href="loai_hang.php">Loại hàng</a></li>
+                <li class="breadcrumb-item active">Thêm loại hàng</li>
             </ol>
         </nav>
     </div>
     <div class="main-content container-fluid">
-        <div class="row">
-            <div class="col-sm-10">
-                <div class="card card-table" style="display:inline-block ;">
+        <div>
+            <form method="post" id="form_1" action="addCate.php">
+                <?php echo $err != "" ?  "
+                                        <div class='alert alert-danger' role='alert'>
+                                            Lỗi: $err
+                                        </div>
+                                    "
+                            :
 
-                    <div class="btn" style="margin-left: 1030px; width: 200px; margin-top: 20px"><a
-                            href="addCate.php"><button>Thêm Loại
-                                Hàng</button></a></div>
-
-                    <div class="card-body">
-                        <table class="table table-striped table-hover table-fw-widget" id="table1">
-                            <thead>
-                                <tr>
-                                    <th>Tên loại hàng</th>
-                                    <th class="center">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($loai_hang as $value) : ?>
-                                <tr class="odd gradeX">
-                                    <td><?php echo $value["ten_loai_hang"] ?></td>
-                                    <td class="center">
-                                        <a href="updateCate.php?id=<?php echo $value["id_loai_hang"] ?>"><button
-                                                class="update">Update</button></a>
-                                        <a onclick="return confirm('Bạn có chắc muốn xóa ??')"
-                                            href="../controller/categories/delete.php?id=<?php echo $value["id_loai_hang"] ?>"><button
-                                                class="delete">Delete</button></a>
-                                    </td>
-                                </tr>
-                                <?php endforeach ?>
-                            </tbody>
-                        </table>
+                            ''
+                        ?>
+                <div class="d-flex justify-content-center">
+                    <div class="col-6">
+                        <div class="form-group mb-3">
+                            <label for="name_cate" class="form-label">Tên danh mục</label>
+                            <input type="text" name="name" id="name_cate" class="form-control">
+                            <div class="form-message text-danger mt-2"></div>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <div class="d-flex justify-content-around">
+                    <div class="col-3">
+                        <button class="btn btn-outline-success" name="add_cate" type="submit">Submit</button>
+                    </div>
+                </div>
+            </form>
         </div>
 
     </div>
