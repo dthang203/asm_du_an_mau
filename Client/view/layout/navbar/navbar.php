@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.webp">
     <title>Harosa</title>
-    <link rel="stylesheet" href="assets/css/theme.min.css">
+    <link rel="stylesheet" href="../assets/css/theme.min.css">
 </head>
 
 <body>
@@ -17,7 +17,7 @@
         class="navbar navbar-expand-lg navbar-light fixed-top py-3 d-block"
         data-navbar-on-scroll="data-navbar-on-scroll">
         <div class="container"><a class="navbar-brand d-inline-flex" href=""><img class="d-inline-block"
-                    src="assets/img/logo.png" alt="logo" /><span
+                    src="../../../../Client/view/assets/img/logo.png" alt="logo" /><span
                     class="text-1000 fs-0 fw-bold ms-2">Harosa</span></a><button class="navbar-toggler collapsed"
                 type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
@@ -53,7 +53,7 @@
                             <circle cx="11" cy="11" r="8"></circle>
                             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                         </svg></a>
-                    <a class="text-1000" routerLink="/login"> <svg class="feather feather-user me-3"
+                    <a class="text-1000" href="/Client/view/auth/login.php"> <svg class="feather feather-user me-3"
                             xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>

@@ -95,5 +95,5 @@
         </div><!-- end of .container-->
     </section><!-- <section> close ============================-->
     <!-- ============================================-->
-    <script src='../../../assets/js/theme.js'></script>
+    <script src='../../assets/js/theme.js'></script>
 </body>
