@@ -9,7 +9,7 @@ $user = getAll($query);
 </div>
 <div class="be-content">
     <div class="page-head">
-        <h2 class="page-head-title">Quản lý ngừi dùng</h2>
+        <h2 class="page-head-title">Quản lý người dùng</h2>
         <nav aria-label="breadcrumb" role="navigation">
             <ol class="breadcrumb page-head-nav">
                 <li class="breadcrumb-item"><a href="admin.php">Trang chủ</a></li>
@@ -19,11 +19,11 @@ $user = getAll($query);
         </nav>
     </div>
     <div class="main-content container-fluid">
-
         <div class="row">
-            <div class="col-sm-12">
-                <div class="card card-table">
-                    <div class="btn" style="margin-left: 1300px;"><a href="adduser.php"><button>Thêm người
+            <div class="col-sm-10">
+                <div class="card card-table" style="display:inline-block ;">
+                    <div class="btn" style="margin-left: 1030px; width: 200px; margin-top: 20px"><a
+                            href="addUser.php"><button>Thêm người
                                 dùng</button></a></div>
 
                     <div class="card-body">
@@ -45,12 +45,12 @@ $user = getAll($query);
                                     </td>
                                     <td><?php echo $value["vai_tro"] ?></td>
                                     <td class="center">
-                                        <a href="sua_user.php?id=<?php echo $value["id"] ?>"><button
+                                        <a href="updateUser.php?id=<?php echo $value["id"] ?>"><button
                                                 class="update">Update</button></a>
 
 
                                         <a onclick="return confirm('Bạn có chắc muốn xóa ??')"
-                                            href="./controller/user/save_deleuser.php?id=<?php echo $value["id"] ?>"><button
+                                            href="../controller/users/deleteUser.php ?id=<?php echo $value["id"] ?>"><button
                                                 class="delete">Delete</button></a>
                                     </td>
 

@@ -22,10 +22,11 @@ $hang = getAll($query);
         <div class="row">
             <div class="col-sm-10">
                 <div class="card card-table" style="display:inline-block ;">
-                    <div class="card-header">
-                        <div class="btn" style="margin-left: 1000px; width: 200px"><a href="addProduct.php"><button>Thêm
-                                    Sản phẩm</button></a></div>
-                    </div>
+
+                    <div class="btn" style="margin-left: 1030px; width: 200px; margin-top: 20px"><a
+                            href="addProduct.php"><button>Thêm
+                                Sản phẩm</button></a></div>
+
                     <div class="card-body">
                         <table class="table table-striped table-hover table-fw-widget" id="table1">
                             <thead>
@@ -45,7 +46,7 @@ $hang = getAll($query);
                                 <tr class="odd gradeX">
                                     <td style="width: 150px;"><?php echo $value["ten_hang"]?></td>
                                     <td>
-                                        <img src="assets/images/product/<?php echo $value['hinh_anh'] ?>" alt=""
+                                        <img src="./assets/images/product/<?php echo $value['hinh_anh'] ?>" alt=""
                                             style="width:100px;">
                                     </td>
                                     <td><?php echo $value["gia"]?></td>
