@@ -21,6 +21,7 @@
                                     <?php echo $err != "" ?  "
                                         <div class='alert alert-danger' role='alert'>
                                             Lỗi: $err
+                                           
                                         </div>
                                     "
                                     :
@@ -28,7 +29,7 @@
                                     ''
                                 ?>
 
-                                    <p>Please login to your account</p>
+                                    <p>Please login to your account </p>
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="username">Email</label>

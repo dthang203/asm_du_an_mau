@@ -41,7 +41,8 @@ $user = getAll($query);
                                 <?php foreach ($user as  $value) : ?><tr class="odd gradeX">
                                     <td><?php echo $value["ten"] ?></td>
                                     <td><?php echo $value["tai_khoan"] ?> </td>
-                                    <td><img style="width: 50px;" src="./assets/img/<?php echo $value["hinh"]?>">
+                                    <td><img style="width: 50px;"
+                                            src="../../../Client/view/assets/img/<?php echo $value["hinh"]?>">
                                     </td>
                                     <td><?php echo $value["vai_tro"] ?></td>
                                     <td class="center">

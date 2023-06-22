@@ -28,7 +28,7 @@ $cmt = getAll($query);
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Teen người dùng</th>
+                                    <th>Tên người dùng</th>
                                     <th>Ngày nhập</th>
                                     <th>Nội dung </th>
                                     <th>Id sản phẩm</th>
@@ -50,7 +50,7 @@ $cmt = getAll($query);
                                     </td>
                                     <td><?php echo $value["id_sp"]?></td>
                                     <td><a onclick="return confirm('Bạn có chắc muốn xóa ??')"
-                                            href="./controller/cmt/delete.php?id=<?php echo $value["id"] ?>"><button
+                                            href="../controller/comment/deleteComment.php?id=<?php echo $value["id"] ?>"><button
                                                 class="delete">Delete</button></a></td>
                                 </tr>
                                 <?php endforeach ?>

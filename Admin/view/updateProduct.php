@@ -14,8 +14,8 @@ $loai_hang = getAll($query1);
         <h2 class="page-head-title">Cập nhập sản phẩm</h2>
         <nav aria-label="breadcrumb" role="navigation">
             <ol class="breadcrumb page-head-nav">
-                <li class="breadcrumb-item"><a href="admin.php">Trang chủ</a></li>
-                <li class="breadcrumb-item"><a href="hang.php">Sản phẩm</a></li>
+                <li class="breadcrumb-item"><a href="../view/admin.php">Trang chủ</a></li>
+                <li class="breadcrumb-item"><a href="../view/products.php">Sản phẩm</a></li>
                 <li class="breadcrumb-item active">Cập nhập sản phẩm</li>
             </ol>
         </nav>

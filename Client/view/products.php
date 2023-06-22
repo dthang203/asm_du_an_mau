@@ -1,6 +1,37 @@
 <!--Main Navigation-->
 <?php
   include "layout/navbar/navbar.php";
+  include "../model/config.php";
+  function getCategory()
+  {
+    $sql = 'SELECT * FROM loai_hang';
+    return getAll($sql);
+}
+function findCategory($id)
+{
+    $sql = "SELECT * FROM hang WHERE id_loai_hang  ='$id'";
+    return getAll($sql);
+}
+$allCate = getCategory();
+    
+    $query = "select * from hang";
+    $hang = getAll($query);
+
+if (isset($_POST['filter_btn'])) {
+    $filter = $_POST['filter'];
+    if ($filter == 'all') {
+        $querySearch = "select * from hang where ten_hang like '%$search%'";
+        $hang = getAll($querySearch);
+    } else {
+        $hang = findCategory($filter);
+    }
+}
+function hanghoa_top5()
+{
+    $sql = "SELECT * FROM `hang` WHERE 1 order by `id` desc limit 5";
+    return getAll($sql);
+}
+$dstop3 = hanghoa_top5();
 ?>
 <div class="">
     <section class="py-11 bg-light-gradient border-bottom border-white border-5">
@@ -48,14 +79,15 @@
                                 <div class="accordion-body" style="padding:0">
                                     <ul class="list-unstyled" style="margin-left: 20px;">
                                         <li><a style="font-size: 16px;padding:15px 8px; border-bottom: 1px solid #ccc; color:#6e757c !important"
-                                                [routerLink]="['/products']" [queryParams]="{page: 1}"
                                                 class="active d-block text-dark text-decoration-none">All </a></li>
-
-                                        <li *ngFor="let item of categories"><a
+                                        <?php foreach ($allCate as $value) : ?>
+                                        <li>
+                                            <a value="<?php echo $value['id_loai_hang'] ?>"
                                                 style="font-size: 16px;padding:15px 8px; border-bottom: 1px solid #ccc; color:#6e757c !important"
-                                                [routerLink]="['/products']" [queryParams]="{ cate: item?.name }"
-                                                class="active d-block text-dark text-decoration-none">Loai 1
-                                            </a></li>
+                                                class="active d-block text-dark text-decoration-none"><?php echo $value['ten_loai_hang'] ?>
+                                            </a>
+                                        </li>
+                                        <?php endforeach ?>
                                     </ul>
                                 </div>
                             </div>
@@ -69,9 +101,8 @@
             <!-- content -->
             <div class="col-lg-9">
                 <header class="d-sm-flex align-items-center border-bottom mb-4 pb-3">
-                    <strong class="d-block py-2">32 Items found </strong>
+                    <!-- <strong class="d-block py-2">32 Items found </strong> -->
                     <!-- input -->
-
                     <div class="ms-auto d-flex gap-2 align-items-center">
                         <div class="d-flex">
 
@@ -97,18 +128,19 @@
                         </div>
                     </div>
                 </header>
-                <div *ngIf="typeList">
-                    <div *ngFor="let item of datas" class="row justify-content-center mb-3">
-                        <div class="col-md-12">
+                <div>
+                    <div class="row">
+                        <?php foreach ($hang as $value) : ?>
+                        <div class="col-md-12  justify-content-center mb-3">
                             <div class="card shadow-0 border rounded-3">
                                 <div class="card-body">
                                     <div class="row g-0">
+
                                         <div class="col-xl-3 col-md-4 d-flex justify-content-center">
                                             <div
                                                 class="bg-image hover-zoom ripple rounded ripple-surface me-md-3 mb-3 mb-md-0">
                                                 <img [routerLink]="'/products/'+item?._id"
-                                                    src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/12.webp"
-                                                    class="w-100" />
+                                                    src="./assets/img/<?php echo $value['hinh_anh'] ?>" class="w-100" />
                                                 <a href="#!">
                                                     <div class="hover-overlay">
                                                         <div class="mask"
@@ -117,13 +149,14 @@
                                                 </a>
                                             </div>
                                         </div>
+
                                         <div class="col-xl-6 col-md-5 col-sm-7">
-                                            <h5 style="margin-bottom: 0; " [routerLink]="'/products/'+item?._id">
-                                                Loai
-                                            </h5>
+
                                             <h2
                                                 style="padding:0;margin:0; width: 400px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                                                Ten san pham</h2>
+                                                <a
+                                                    href="./detail.php?id=<?php echo $value["id"] ?>"><?php echo $value["ten_hang"] ?></a>
+                                            </h2>
                                             <div class="d-flex flex-row">
                                                 <div class="text-warning mb-1 me-2">
                                                     <i class="fa fa-star"></i>
@@ -137,32 +170,36 @@
                                             </div>
 
                                             <p class="text mb-4 mb-md-0">
-                                                description
+                                                Description: <?php echo $value["mo_ta"] ?>
                                             </p>
                                         </div>
+
                                         <div class="col-xl-3 col-md-3 col-sm-5">
                                             <div class="d-flex align-items-center gap-2">
-                                                <h2 class="price" style="margin:0;color:#ed1d24">Gia</h2>
-                                                <del *ngIf='item?.discount > 0' style="color:#ccc">gia goc</del>
-                                                <!-- ${{(item?.price * (item?.discount / 100)).toFixed(2)}} -->
+                                                <h2 class="price" style="margin:0;color:#ed1d24">Gia:
+                                                    $<?php echo $value["gia"] ?></h2>
                                             </div>
                                             <h6 class="text-success">Free shipping</h6>
                                             <div class="mt-4 d-flex ">
                                                 <button class="btn btn-primary shadow-0" style="margin-right: 10px;"
                                                     type="button">Buy
                                                     this</button>
-                                                <a href="#!" class="btn btn-light border px-2 pt-2 icon-hover"><i
-                                                        class="fas fa-heart fa-lg px-1"></i></a>
+                                                <!-- <a href="#!" class="btn btn-light border px-2 pt-2 icon-hover"><i
+                                                        class="fas fa-heart fa-lg px-1"></i> <i
+                                                        class="fa-regular fa-heart"></i> </a> -->
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
+
                             </div>
                         </div>
+                        <?php endforeach ?>
                     </div>
 
                 </div>
-                <div *ngIf="!typeList">
+                <!-- <div *ngIf="!typeList">
                     <div class="row">
                         <div *ngFor="let item of datas" class="col-md-3 col-sm-6 mb-3">
                             <div class="product-grid" style="border-radius: 5px; overflow: hidden;">
@@ -208,7 +245,7 @@
 
 
                     </div>
-                </div>
+                </div> -->
 
                 <hr />
 

@@ -1,5 +1,8 @@
 <?php
-  include "layout/navbar/navbar.php";
+    include "layout/navbar/navbar.php";
+    include "../model/config.php";
+    $query = "select * from hang";
+    $hang = getAll($query);
 ?>
 <div class="">
     <section class="py-11 bg-light-gradient border-bottom border-white border-5">
@@ -53,15 +56,15 @@
     <div class="container">
         <div class="row h-100">
             <div class="col-lg-7 mx-auto text-center mt-7 mb-5">
-                <h5 class="fw-bold fs-3 fs-lg-5 lh-sm">Best Deals</h5>
+                <h5 class="fw-bold fs-3 fs-lg-5 lh-sm">All Products</h5>
             </div>
             <div class="row">
+                <?php foreach ($hang as $value) : ?>
                 <div class="col-md-3 col-sm-6">
                     <div class="product-grid" style="border-radius: 5px; overflow: hidden;">
                         <div class="product-image">
-                            <a href="#" class="image">
-                                <img class="pic-1" src="../../../assets/img/hat.png">
-                                <img class="pic-2" src="../../../assets/img/hat.png">
+                            <a href="./detail.php?id=<?php echo $value["id"] ?>" class="image">
+                                <img class="pic-1" src="../../Client/view/assets/img/<?php echo $value["hinh_anh"] ?>">
                             </a>
                             <ul class="product-links">
                                 <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
@@ -78,92 +81,16 @@
                                 <li class="far fa-star"></li>
                                 <li class="far fa-star"></li>
                             </ul>
-                            <h3 class="title"><a href="#">Men's Jacket</a></h3>
-                            <div class="price">$88.88</div>
+                            <h3 class="title"><a
+                                    href="./detail.php?id=<?php echo $value["id"] ?>"><?php echo $value["ten_hang"] ?></a>
+                            </h3>
+                            <div class="price"><?php echo $value["gia"] ?></div>
                         </div>
                     </div>
+
+
                 </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="product-grid" style="border-radius: 5px; overflow: hidden;">
-                        <div class="product-image">
-                            <a href="#" class="image">
-                                <img class="pic-1" src="../../../assets/img/hat.png">
-                                <img class="pic-2" src="../../../assets/img/hat.png">
-                            </a>
-                            <ul class="product-links">
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                <li><a href="#"><i class="far fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-random"></i></a></li>
-                                <li><a href="#"><i class="fa fa-search"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product-content">
-                            <ul class="rating">
-                                <li class="fa fa-star"></li>
-                                <li class="fa fa-star"></li>
-                                <li class="fa fa-star"></li>
-                                <li class="far fa-star"></li>
-                                <li class="far fa-star"></li>
-                            </ul>
-                            <h3 class="title"><a href="#">Men's Jacket</a></h3>
-                            <div class="price">$88.88</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="product-grid" style="border-radius: 5px; overflow: hidden;">
-                        <div class="product-image">
-                            <a href="#" class="image">
-                                <img class="pic-1" src="../../../assets/img/hat.png">
-                                <img class="pic-2" src="../../../assets/img/hat.png">
-                            </a>
-                            <ul class="product-links">
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                <li><a href="#"><i class="far fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-random"></i></a></li>
-                                <li><a href="#"><i class="fa fa-search"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product-content">
-                            <ul class="rating">
-                                <li class="fa fa-star"></li>
-                                <li class="fa fa-star"></li>
-                                <li class="fa fa-star"></li>
-                                <li class="far fa-star"></li>
-                                <li class="far fa-star"></li>
-                            </ul>
-                            <h3 class="title"><a href="#">Men's Jacket</a></h3>
-                            <div class="price">$88.88</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="product-grid" style="border-radius: 5px; overflow: hidden;">
-                        <div class="product-image">
-                            <a href="#" class="image">
-                                <img class="pic-1" src="../../../assets/img/hat.png">
-                                <img class="pic-2" src="../../../assets/img/hat.png">
-                            </a>
-                            <ul class="product-links">
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                <li><a href="#"><i class="far fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-random"></i></a></li>
-                                <li><a href="#"><i class="fa fa-search"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product-content">
-                            <ul class="rating">
-                                <li class="fa fa-star"></li>
-                                <li class="fa fa-star"></li>
-                                <li class="fa fa-star"></li>
-                                <li class="far fa-star"></li>
-                                <li class="far fa-star"></li>
-                            </ul>
-                            <h3 class="title"><a href="#">Men's Jacket</a></h3>
-                            <div class="price">$88.88</div>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach ?>
             </div>
         </div>
     </div><!-- end of .container-->
@@ -254,159 +181,6 @@
 </section><!-- <section> close ============================-->
 <!-- ============================================-->
 
-<section class="py-0">
-    <div class="container">
-        <div class="row h-100">
-            <div class="col-lg-7 mx-auto text-center mb-6">
-                <h5 class="fs-3 fs-lg-5 lh-sm mb-3">Checkout New Arrivals</h5>
-            </div>
-            <div class="col-12">
-                <!-- client -->
-                <div class="carousel slide" id="carouselNewArrivals" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active" data-bs-interval="10000">
-                            <div class="row h-100 align-items-center g-2">
-                                <!-- render lg -->
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                    <div class="card card-span h-100 text-white"><img class="card-img h-100"
-                                            src="assets/img/full-body.png" alt="..." />
-                                        <div class="card-img-overlay bg-dark-gradient d-flex flex-column-reverse">
-                                            <h6 class="text-primary" style="font-size:20px;color:#333 !important">$175
-                                            </h6>
-                                            <p class="text-400 fs-4">Jumper set for Women</p>
-                                            <h4 class="text-light">Flat Hill Slingback</h4>
-                                        </div><a class="stretched-link" href="#"></a>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                    <div class="card card-span h-100 text-white"><img class="card-img h-100"
-                                            src="assets/img/full-body.png" alt="..." />
-                                        <div class="card-img-overlay bg-dark-gradient d-flex flex-column-reverse">
-                                            <h6 class="text-primary" style="font-size:20px;color:#333 !important">$175
-                                            </h6>
-                                            <p class="text-400 fs-4">Jumper set for Women</p>
-                                            <h4 class="text-light">Flat Hill Slingback</h4>
-                                        </div><a class="stretched-link" href="#"></a>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                    <div class="card card-span h-100 text-white"><img class="card-img h-100"
-                                            src="assets/img/full-body.png" alt="..." />
-                                        <div class="card-img-overlay bg-dark-gradient d-flex flex-column-reverse">
-                                            <h6 class="text-primary" style="font-size:20px;color:#333 !important">$175
-                                            </h6>
-                                            <p class="text-400 fs-4">Jumper set for Women</p>
-                                            <h4 class="text-light">Flat Hill Slingback</h4>
-                                        </div><a class="stretched-link" href="#"></a>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                    <div class="card card-span h-100 text-white"><img class="card-img h-100"
-                                            src="assets/img/full-body.png" alt="..." />
-                                        <div class="card-img-overlay bg-dark-gradient d-flex flex-column-reverse">
-                                            <h6 class="text-primary" style="font-size:20px;color:#333 !important">$175
-                                            </h6>
-                                            <p class="text-400 fs-4">Jumper set for Women</p>
-                                            <h4 class="text-light">Flat Hill Slingback</h4>
-                                        </div><a class="stretched-link" href="#"></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item" data-bs-interval="5000">
-                            <div class="row h-100 align-items-center g-2">
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                    <div class="card card-span h-100 text-white"><img class="card-img h-100"
-                                            src="assets/img/full-body.png" alt="..." />
-                                        <div class="card-img-overlay bg-dark-gradient d-flex flex-column-reverse">
-                                            <h6 class="text-primary" style="font-size:20px;color:#333 !important">$175
-                                            </h6>
-                                            <p class="text-400 fs-4">Jumper set for Women</p>
-                                            <h4 class="text-light">Flat Hill Slingback</h4>
-                                        </div><a class="stretched-link" href="#"></a>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                    <div class="card card-span h-100 text-white"><img class="card-img h-100"
-                                            src="assets/img/full-body.png" alt="..." />
-                                        <div class="card-img-overlay bg-dark-gradient d-flex flex-column-reverse">
-                                            <h6 class="text-primary" style="font-size:20px;color:#333 !important">$175
-                                            </h6>
-                                            <p class="text-400 fs-4">Jumper set for Women</p>
-                                            <h4 class="text-light">Flat Hill Slingback</h4>
-                                        </div><a class="stretched-link" href="#"></a>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                    <div class="card card-span h-100 text-white"><img class="card-img h-100"
-                                            src="assets/img/full-body.png" alt="..." />
-                                        <div class="card-img-overlay bg-dark-gradient d-flex flex-column-reverse">
-                                            <h6 class="text-primary" style="font-size:20px;color:#333 !important">$175
-                                            </h6>
-                                            <p class="text-400 fs-4">Jumper set for Women</p>
-                                            <h4 class="text-light">Flat Hill Slingback</h4>
-                                        </div><a class="stretched-link" href="#"></a>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                    <div class="card card-span h-100 text-white"><img class="card-img h-100"
-                                            src="assets/img/full-body.png" alt="..." />
-                                        <div class="card-img-overlay bg-dark-gradient d-flex flex-column-reverse">
-                                            <h6 class="text-primary" style="font-size:20px;color:#333 !important">$175
-                                            </h6>
-                                            <p class="text-400 fs-4">Jumper set for Women</p>
-                                            <h4 class="text-light">Flat Hill Slingback</h4>
-                                        </div><a class="stretched-link" href="#"></a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="row"><button class="carousel-control-prev" type="button"
-                                data-bs-target="#carouselNewArrivals" data-bs-slide="prev"><span
-                                    class="carousel-control-prev-icon" aria-hidden="true"></span><span
-                                    class="visually-hidden">Previous</span></button><button
-                                class="carousel-control-next" type="button" data-bs-target="#carouselNewArrivals"
-                                data-bs-slide="next"><span class="carousel-control-next-icon"
-                                    aria-hidden="true"></span><span class="visually-hidden">Next </span></button></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- ============================================-->
-<!-- <section> begin ============================-->
-<section class="py-0" style="margin-top:120px;" id="collection">
-    <div class="container">
-        <div class="row h-100 gx-2">
-            <div class="col-md-6">
-                <div class="card card-span h-100 text-white"><img class="card-img h-100" src="assets/img/urban.png"
-                        alt="..." />
-                    <div class="card-img-overlay bg-dark-gradient">
-                        <div class="p-5 p-md-2 p-xl-5">
-                            <h1 class="fs-md-4 fs-lg-7 text-light">Urban Stories </h1>
-                            <h5 class="fs-2 text-light">collection</h5>
-                        </div>
-                    </div><a class="stretched-link" href=""></a>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card card-span h-100 text-white"><img class="card-img h-100" src="assets/img/country.png"
-                        alt="..." />
-                    <div class="card-img-overlay bg-dark-gradient">
-                        <div class="p-5 p-md-2 p-xl-5 d-flex flex-column flex-end-center align-items-baseline h-100">
-                            <h1 class="fs-md-4 fs-lg-7 text-light">Urban Stories </h1>
-                            <h5 class="fs-2 text-light">collection</h5>
-                        </div>
-                    </div><a class="stretched-link" href=""></a>
-                </div>
-            </div>
-        </div>
-    </div><!-- end of .container-->
-</section><!-- <section> close ============================-->
-<!-- ============================================-->
-
 <section>
     <div class="container">
         <div class="row h-100">
@@ -415,12 +189,13 @@
             </div>
             <div class="col-12">
                 <div class="row">
+                    <?php foreach ($hang as $value) : ?>
                     <div class="col-md-3 col-sm-6">
                         <div class="product-grid" style="border-radius: 5px; overflow: hidden;">
                             <div class="product-image">
-                                <a href="#" class="image">
-                                    <img class="pic-1" src="../../../assets/img/hat.png">
-                                    <img class="pic-2" src="../../../assets/img/hat.png">
+                                <a href="./detail.php?id=<?php echo $value["id"] ?>" class="image">
+                                    <img class="pic-1"
+                                        src="../../Client/view/assets/img/<?php echo $value["hinh_anh"] ?>">
                                 </a>
                                 <ul class="product-links">
                                     <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
@@ -437,11 +212,14 @@
                                     <li class="far fa-star"></li>
                                     <li class="far fa-star"></li>
                                 </ul>
-                                <h3 class="title"><a href="#">Men's Jacket</a></h3>
-                                <div class="price">$88.88</div>
+                                <h3 class="title"><a
+                                        href="./detail.php?id=<?php echo $value["id"] ?>"><?php echo $value["ten_hang"] ?></a></a>
+                                </h3>
+                                <div class="price"><?php echo $value["gia"] ?></div>
                             </div>
                         </div>
                     </div>
+                    <?php endforeach ?>
                 </div>
             </div>
         </div>
@@ -538,103 +316,6 @@
 </section><!-- <section> close ============================-->
 <!-- ============================================-->
 
-
-
-<!-- ============================================-->
-<!-- <section> begin ============================-->
-<section class="py-0 pb-8">
-    <div class="container-fluid container-lg">
-        <div class="row h-100 g-2 justify-content-center">
-            <div class="col-sm-9 col-md-4 mb-3 mb-md-0 h-100">
-                <div class="card card-span text-white h-100"><img class="img-card h-100"
-                        src="assets/img/shoes-blog-1.png" alt="..." />
-                    <div class="card-body px-xl-5 px-md-3 pt-0 pb-7">
-                        <div class="d-flex justify-content-between align-items-center bg-100 mt-n5 me-auto"><img
-                                src="assets/img/author-1.png" width="60" alt="..." />
-                            <div class="d-flex flex-1 justify-content-around"> <span class="text-900 text-center"><i
-                                        data-feather="eye"> </i><span class="text-900 ms-2">35</span></span><span
-                                    class="text-900 text-center"><i data-feather="heart"> </i><span
-                                        class="text-900 ms-2">23</span></span><span class="text-900 text-center"><i
-                                        data-feather="corner-up-right"> </i><span class="text-900 ms-2">14</span></span>
-                            </div>
-                        </div>
-                        <h6 class="text-900 mt-3">Kelly Hudson . <span class="fw-normal">Fashion actiKelly Hudson .
-                            </span></h6>
-                        <h3 class="fw-bold text-1000 mt-5 text-truncate">How important are shoes in your style?</h3>
-                        <p class="text-900 mt-3">Is it possible to assess a person just on the basis of their footwear?
-                            Obviously, nobody should criticize, but certainly, shoes say a lot about someone. It matters
-                            for the outsiders that we meet every day...</p><a
-                            class="btn btn-lg text-900 fs-5 px-0 hvr-icon-forward" href="" role="button">Read more<svg
-                                class="bi bi-arrow-right-short hover-icon" xmlns="http://www.w3.org/2000/svg" width="30"
-                                height="30" fill="currentColor" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z">
-                                </path>
-                            </svg></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-9 col-md-4 mb-3 mb-md-0 h-100">
-                <div class="card card-span text-white h-100"><img class="img-card h-100"
-                        src="assets/img/fashion-blog-2.png" alt="..." />
-                    <div class="card-body px-xl-5 px-md-3 pt-0 pb-7">
-                        <div class="d-flex justify-content-between align-items-center bg-100 mt-n5 me-auto"><img
-                                src="assets/img/author-2.png" width="60" alt="..." />
-                            <div class="d-flex flex-1 justify-content-around"> <span class="text-900 text-center"><i
-                                        data-feather="eye"> </i><span class="text-900 ms-2">35</span></span><span
-                                    class="text-900 text-center"><i data-feather="heart"> </i><span
-                                        class="text-900 ms-2">23</span></span><span class="text-900 text-center"><i
-                                        data-feather="corner-up-right"> </i><span class="text-900 ms-2">14</span></span>
-                            </div>
-                        </div>
-                        <h6 class="text-900 mt-3">Rotondwa Johnny . <span class="fw-normal">Fashion activist </span>
-                        </h6>
-                        <h3 class="fw-bold text-1000 mt-5 text-truncate">Fashion trend forecast for Summer 2021</h3>
-                        <p class="text-900 mt-3">While the fashion industry has had a calm year, this season has seen
-                            some beautiful pieces. Over the previous several weeks, commanding coats, and elegant face
-                            masks have ruled Fashion Weeks...</p><a
-                            class="btn btn-lg text-900 fs-5 px-0 hvr-icon-forward" href="" role="button">Read more<svg
-                                class="bi bi-arrow-right-short hover-icon" xmlns="http://www.w3.org/2000/svg" width="30"
-                                height="30" fill="currentColor" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z">
-                                </path>
-                            </svg></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-9 col-md-4 mb-3 mb-md-0 h-100">
-                <div class="card card-span text-white h-100"><img class="img-card h-100"
-                        src="assets/img/fashion-blog-2.png" alt="..." />
-                    <div class="card-body px-xl-5 px-md-3 pt-0 pb-7">
-                        <div class="d-flex justify-content-between align-items-center bg-100 mt-n5 me-auto"><img
-                                src="assets/img/author-2.png" width="60" alt="..." />
-                            <div class="d-flex flex-1 justify-content-around"> <span class="text-900 text-center"><i
-                                        data-feather="eye"> </i><span class="text-900 ms-2">35</span></span><span
-                                    class="text-900 text-center"><i data-feather="heart"> </i><span
-                                        class="text-900 ms-2">23</span></span><span class="text-900 text-center"><i
-                                        data-feather="corner-up-right"> </i><span class="text-900 ms-2">14</span></span>
-                            </div>
-                        </div>
-                        <h6 class="text-900 mt-3">Rotondwa Johnny . <span class="fw-normal">Fashion activist </span>
-                        </h6>
-                        <h3 class="fw-bold text-1000 mt-5 text-truncate">Fashion trend forecast for Summer 2021</h3>
-                        <p class="text-900 mt-3">While the fashion industry has had a calm year, this season has seen
-                            some beautiful pieces. Over the previous several weeks, commanding coats, and elegant face
-                            masks have ruled Fashion Weeks...</p><a
-                            class="btn btn-lg text-900 fs-5 px-0 hvr-icon-forward" href="" role="button">Read more<svg
-                                class="bi bi-arrow-right-short hover-icon" xmlns="http://www.w3.org/2000/svg" width="30"
-                                height="30" fill="currentColor" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z">
-                                </path>
-                            </svg></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div><!-- end of .container-->
-</section><!-- <section> close ============================-->
 <!-- ============================================-->
 
 <section class="py-11 mt-5">

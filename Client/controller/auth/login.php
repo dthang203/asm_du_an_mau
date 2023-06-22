@@ -17,7 +17,9 @@ if(isset($_SESSION['user'])){
         } 
         else if (is_array($isUser)) {
             $_SESSION['user'] = $isUser;
+            $check = $_SESSION['user'];
             $err = '';
+            echo("<script>alert('Đăng nhập thành công')</script>");
             $yourURL="../../view/client.php";
             echo ("<script>location.href='$yourURL'</script>");
         } 
