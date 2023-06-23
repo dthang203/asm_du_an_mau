@@ -61,10 +61,11 @@
             <div class="row">
                 <?php foreach ($hang as $value) : ?>
                 <div class="col-md-3 col-sm-6">
-                    <div class="product-grid" style="border-radius: 5px; overflow: hidden;">
+                    <div class="product-grid" style="border-radius: 5px; overflow: hidden; margin-bottom: 20px">
                         <div class="product-image">
                             <a href="./detail.php?id=<?php echo $value["id"] ?>" class="image">
                                 <img class="pic-1" src="../../Client/view/assets/img/<?php echo $value["hinh_anh"] ?>">
+                                <img class="pic-2" src="../../Client/view/assets/img/<?php echo $value["hinh_anh"] ?>">
                             </a>
                             <ul class="product-links">
                                 <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
@@ -191,10 +192,12 @@
                 <div class="row">
                     <?php foreach ($hang as $value) : ?>
                     <div class="col-md-3 col-sm-6">
-                        <div class="product-grid" style="border-radius: 5px; overflow: hidden;">
+                        <div class="product-grid" style="border-radius: 5px; overflow: hidden;margin-bottom: 20px">
                             <div class="product-image">
                                 <a href="./detail.php?id=<?php echo $value["id"] ?>" class="image">
                                     <img class="pic-1"
+                                        src="../../Client/view/assets/img/<?php echo $value["hinh_anh"] ?>">
+                                    <img class="pic-2"
                                         src="../../Client/view/assets/img/<?php echo $value["hinh_anh"] ?>">
                                 </a>
                                 <ul class="product-links">

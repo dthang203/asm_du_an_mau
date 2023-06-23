@@ -4,8 +4,12 @@ include "../model/config.php";
 $id= $_GET['id'];
 $query = "select * from hang where id = $id";
 $item = getOne($query);
-$query1 = "select * from loai_hang";
+$id_loai_hang = $item["id_loai_hang"];
+$query1 = "select * from loai_hang where id_loai_hang <> $id_loai_hang";
 $loai_hang = getAll($query1);
+
+$query2 = "select * from loai_hang where id_loai_hang = $id_loai_hang";
+$a = getOne($query2);
 ?>
 </div>
 </div>
@@ -59,6 +63,8 @@ $loai_hang = getAll($query1);
                         <div class="form-group mb-3">
                             <label for="" class="form-label">Loại hàng</label>
                             <select name="id_loai_hang" id="id_cate" class="form-control">
+                                <option value="<?php echo $a['id_loai_hang'] ?>"><?php echo $a['ten_loai_hang'] ?>
+                                </option>
                                 <?php foreach ($loai_hang as $values) { ?>
                                 <option value="<?php echo $values['id_loai_hang'] ?>">
                                     <?php echo $values['ten_loai_hang'] ?> </option>

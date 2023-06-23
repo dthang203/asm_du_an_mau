@@ -2,6 +2,8 @@
 <?php
   include "layout/navbar/navbar.php";
   include "../model/config.php";
+  $cate = isset($_GET['cate']) ? $_GET['cate'] : "all";
+ 
   function getCategory()
   {
     $sql = 'SELECT * FROM loai_hang';
@@ -14,8 +16,15 @@ function findCategory($id)
 }
 $allCate = getCategory();
     
-    $query = "select * from hang";
-    $hang = getAll($query);
+$query = "select * from hang";
+$hang = getAll($query);
+if($cate == "all"){
+    $sql = "select * from hang";
+    $hang = getAll($sql);
+}else{
+    $sql = "select * from hang where id_loai_hang = '$cate'";
+    $hang = getAll($sql);
+}
 
 if (isset($_POST['filter_btn'])) {
     $filter = $_POST['filter'];
@@ -78,11 +87,12 @@ $dstop3 = hanghoa_top5();
                                 aria-labelledby="headingOne">
                                 <div class="accordion-body" style="padding:0">
                                     <ul class="list-unstyled" style="margin-left: 20px;">
-                                        <li><a style="font-size: 16px;padding:15px 8px; border-bottom: 1px solid #ccc; color:#6e757c !important"
+                                        <li><a href='?cate=all'
+                                                style="font-size: 16px;padding:15px 8px; border-bottom: 1px solid #ccc; color:#6e757c !important"
                                                 class="active d-block text-dark text-decoration-none">All </a></li>
                                         <?php foreach ($allCate as $value) : ?>
                                         <li>
-                                            <a value="<?php echo $value['id_loai_hang'] ?>"
+                                            <a href="?cate=<?php echo $value['id_loai_hang'] ?>"
                                                 style="font-size: 16px;padding:15px 8px; border-bottom: 1px solid #ccc; color:#6e757c !important"
                                                 class="active d-block text-dark text-decoration-none"><?php echo $value['ten_loai_hang'] ?>
                                             </a>
@@ -104,27 +114,12 @@ $dstop3 = hanghoa_top5();
                     <!-- <strong class="d-block py-2">32 Items found </strong> -->
                     <!-- input -->
                     <div class="ms-auto d-flex gap-2 align-items-center">
-                        <div class="d-flex">
-
-                            <input class="border" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
-                                placeholder="Search" (keyup)="searchFunction()"
-                                style="padding: 7px 6px 7px 10px;border-radius: 5px;outline: none;  ">
-                        </div>
-                        <select class="form-select d-inline-block w-auto border pt-1">
-                            <option value="0">Best match</option>
-                            <option value="1">Recommended</option>
-                            <option value="2">High rated</option>
-                            <option value="3">Randomly</option>
-                        </select>
                         <div class="btn-group shadow-0 border">
                             <a class="btn btn-light" style="border:none" [class.active]="typeList"
                                 (click)="changeListColumn()" title="List view">
                                 <i class="fa fa-bars fa-lg"></i>
                             </a>
-                            <a class="btn btn-light" style="border:none" [class.active]="!typeList"
-                                (click)="changeListRow()" title="Grid view">
-                                <i class="fa fa-th fa-lg"></i>
-                            </a>
+
                         </div>
                     </div>
                 </header>
@@ -181,9 +176,11 @@ $dstop3 = hanghoa_top5();
                                             </div>
                                             <h6 class="text-success">Free shipping</h6>
                                             <div class="mt-4 d-flex ">
-                                                <button class="btn btn-primary shadow-0" style="margin-right: 10px;"
-                                                    type="button">Buy
-                                                    this</button>
+                                                <a href="./detail.php?id=<?php echo $value["id"] ?>">
+                                                    <button class="btn btn-primary shadow-0" style="margin-right: 10px;"
+                                                        name="addcart">Buy
+                                                        this</button>
+                                                </a>
                                                 <!-- <a href="#!" class="btn btn-light border px-2 pt-2 icon-hover"><i
                                                         class="fas fa-heart fa-lg px-1"></i> <i
                                                         class="fa-regular fa-heart"></i> </a> -->
@@ -199,53 +196,6 @@ $dstop3 = hanghoa_top5();
                     </div>
 
                 </div>
-                <!-- <div *ngIf="!typeList">
-                    <div class="row">
-                        <div *ngFor="let item of datas" class="col-md-3 col-sm-6 mb-3">
-                            <div class="product-grid" style="border-radius: 5px; overflow: hidden;">
-                                <div class="product-image">
-                                    <a [routerLink]="'/products/'+item?._id" class="image">
-                                        <img [routerLink]="'/products/'+item?._id" class="pic-1"
-                                            src="../../../assets/img/hat.png">
-                                        <img [routerLink]="'/products/'+item?._id" class="pic-2"
-                                            src="../../../assets/img/hat.png">
-                                    </a>
-                                    <ul class="product-links">
-                                        <li><a [routerLink]="'/products/'+item?._id"><i
-                                                    class="fa fa-shopping-cart"></i></a></li>
-                                        <li><a [routerLink]="'/products/'+item?._id"><i class="far fa-heart"></i></a>
-                                        </li>
-                                        <li><a [routerLink]="'/products/'+item?._id"><i class="fa fa-random"></i></a>
-                                        </li>
-                                        <li><a [routerLink]="'/products/'+item?._id"><i class="fa fa-search"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="product-content">
-                                    <ul class="rating">
-                                        <li class="fa fa-star"></li>
-                                        <li class="fa fa-star"></li>
-                                        <li class="fa fa-star"></li>
-                                        <li class="far fa-star"></li>
-                                        <li class="far fa-star"></li>
-                                    </ul>
-                                    <h3 style="width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-                                        class="title">
-                                        <a style="text-decoration: none;" [routerLink]="'/products/'+item?._id">Ten san
-                                            pham</a>
-                                    </h3>
-                                    <div class="d-flex align-items-center gap-2">
-
-                                        <h2 class="price" style="margin:0">Gia san pham</h2>
-                                        <del *ngIf='item?.discount > 0' style="color:#ccc">Gia goc</del>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div> -->
 
                 <hr />
 

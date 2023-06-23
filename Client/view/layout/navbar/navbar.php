@@ -15,7 +15,9 @@ session_start();
     <link rel="stylesheet" href="../assets/css/theme.min.css">
 
     <!-- Icon Font CSS -->
-    <link rel="stylesheet" href="../assets/css2/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../assets/css2/ionicons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
@@ -92,7 +94,8 @@ session_start();
                     <div class="topbar-nav">
                         <!-- my account -->
                         <div class="dropdown menu-my-account-container">
-                            <button data-bs-toggle="dropdown" type='button'>
+                            <button data-bs-toggle="dropdown" type='button'
+                                style=" border: none; background-color: white;">
                                 <svg class="feather feather-user me-3" xmlns="http://www.w3.org/2000/svg" width="16"
                                     height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round">
