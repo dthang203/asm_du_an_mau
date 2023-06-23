@@ -1,12 +1,14 @@
 <?php
 include "../layout/header.php";
 include "../model/config.php";
+//thêm sản phẩm vào cơ sở dữ liệu
 function addproduct($productDesc, $productImage, $productName, $gia, $ngay_nhap, $so_luong, $id_loai_hang)
 {
     $sql = "INSERT into hang (ten_hang, hinh_anh,gia,ngay_nhap,so_luong,mo_ta,id_loai_hang) values(
         '$productName','$productImage','$gia','$ngay_nhap','$so_luong','$productDesc','$id_loai_hang') ";
     getAll($sql);
 }
+//kiểm tra khi ấn nút btn
 $err = "";
 if (isset($_POST["add_product"])) {
     $productName = $_POST["name"];
@@ -20,8 +22,7 @@ if (isset($_POST["add_product"])) {
         $err = 'Vui lòng không bỏ trống';
     } else {
         $err = "";
-
-        $target_dir = "./assets/images/product";
+        $target_dir = "../../Client/view/assets/img/";
         $target_file = $target_dir . basename($_FILES["img"]["name"]);
         move_uploaded_file($_FILES["img"]["tmp_name"], $target_file);
         addproduct($productDesc, $productImage, $productName, $gia, $ngay_nhap, $so_luong, $id_loai_hang);
@@ -31,9 +32,6 @@ if (isset($_POST["add_product"])) {
 }
 $query = "select * from loai_hang";
 $loai_hang = getAll($query);
-
-
-
 
 ?>
 ?>

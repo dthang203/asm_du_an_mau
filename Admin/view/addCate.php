@@ -13,7 +13,7 @@ if (isset($_POST["add_cate"]))  {
         $err = "";
         $query = "insert into loai_hang(ten_loai_hang) values('$name_cate ') ";
         connect($query);
-        
+
         $yourURL = "http://localhost/Admin/view/categories.php";
         echo ("<script>location.href='$yourURL'</script>");
     }

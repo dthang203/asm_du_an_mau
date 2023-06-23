@@ -1,23 +1,23 @@
-<!--Main Navigation-->
 <?php
   include "layout/navbar/navbar.php";
   include "../model/config.php";
-  $cate = isset($_GET['cate']) ? $_GET['cate'] : "all";
- 
-  function getCategory()
-  {
+//lấy tất cả categories
+function getCategory()
+{
     $sql = 'SELECT * FROM loai_hang';
     return getAll($sql);
 }
+
+//tìm categories theo id
 function findCategory($id)
 {
     $sql = "SELECT * FROM hang WHERE id_loai_hang  ='$id'";
     return getAll($sql);
 }
 $allCate = getCategory();
-    
-$query = "select * from hang";
-$hang = getAll($query);
+
+//kiểm tra trên url có cate không
+$cate = isset($_GET['cate']) ? $_GET['cate'] : "all";
 if($cate == "all"){
     $sql = "select * from hang";
     $hang = getAll($sql);
@@ -26,21 +26,7 @@ if($cate == "all"){
     $hang = getAll($sql);
 }
 
-if (isset($_POST['filter_btn'])) {
-    $filter = $_POST['filter'];
-    if ($filter == 'all') {
-        $querySearch = "select * from hang where ten_hang like '%$search%'";
-        $hang = getAll($querySearch);
-    } else {
-        $hang = findCategory($filter);
-    }
-}
-function hanghoa_top5()
-{
-    $sql = "SELECT * FROM `hang` WHERE 1 order by `id` desc limit 5";
-    return getAll($sql);
-}
-$dstop3 = hanghoa_top5();
+
 ?>
 <div class="">
     <section class="py-11 bg-light-gradient border-bottom border-white border-5">

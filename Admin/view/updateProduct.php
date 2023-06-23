@@ -1,13 +1,15 @@
 <?php
 include "../layout/header.php";
 include "../model/config.php";
+//lấy id trên url
 $id= $_GET['id'];
-$query = "select * from hang where id = $id";
+$query = "select * from hang where id = $id";  //lấy thông tin chi tiết theo id
 $item = getOne($query);
 $id_loai_hang = $item["id_loai_hang"];
+// lấy thông tin về tất cả các loại hàng khác loại hàng của sản phẩm hiện tại
 $query1 = "select * from loai_hang where id_loai_hang <> $id_loai_hang";
 $loai_hang = getAll($query1);
-
+ //lấy thông tin về loại hàng của sản phẩm hiện tại
 $query2 = "select * from loai_hang where id_loai_hang = $id_loai_hang";
 $a = getOne($query2);
 ?>

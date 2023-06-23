@@ -1,5 +1,7 @@
 <?php
     include "layout/navbar/navbar.php";  
+    //kiểm tra có tồn tại giỏ hàng hay ko
+    //tính tổng
     if(isset($_SESSION['cart'])){
         $cart = $_SESSION['cart'];
         $tong=0;
@@ -7,7 +9,7 @@
          $tt=$items['gia'] * $items['so_luong'];
          $tong+=$tt;
         }
-        
+        //thay đổi số lượng
         if(isset($_POST['updated_quantity'])){
             $new_quantity = $_POST['updated_quantity'];
             $id = $_POST['id_updated'];
@@ -21,7 +23,7 @@
     else {
         $cart=[];
         $tong=0;
-        echo 'chuwa co gio hang';
+        echo 'chua co gio hang';
     }
 ?>
 

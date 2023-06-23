@@ -18,12 +18,8 @@ if (isset($_POST["btn_register"])) {
         $err = 'Mật khẩu không trùng khớp';
     } else {
         createAccount($email, $name, $pass);
-        // header('Location: login.php');
         echo ("<script>alert('Đăng ký thành công')</script>");
         $yourURL="http://localhost/Client/view/auth/login.php";
             echo ("<script>location.href='$yourURL'</script>");
-
-
-
     }
 }

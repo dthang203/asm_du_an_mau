@@ -49,7 +49,7 @@ session_start();
         data-navbar-on-scroll="data-navbar-on-scroll">
         <div class="container"><a href="../../../../Client/view/client.php" class="navbar-brand d-inline-flex"
                 href=""><img class="d-inline-block" src="../../../../Client/view/assets/img/logo.png" alt="logo" /><span
-                    class="text-1000 fs-0 fw-bold ms-2">Harosa</span></a><button class="navbar-toggler collapsed"
+                    class="text-1000 fs-0 fw-bold ms-2">Xshop</span></a><button class="navbar-toggler collapsed"
                 type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
                     class="navbar-toggler-icon"></span></button>

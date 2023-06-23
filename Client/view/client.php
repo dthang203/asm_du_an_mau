@@ -68,7 +68,8 @@
                                 <img class="pic-2" src="../../Client/view/assets/img/<?php echo $value["hinh_anh"] ?>">
                             </a>
                             <ul class="product-links">
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                <li><a href="./detail.php?id=<?php echo $value["id"] ?>"><i
+                                            class="fa fa-shopping-cart"></i></a></li>
                                 <li><a href="#"><i class="far fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-random"></i></a></li>
                                 <li><a href="#"><i class="fa fa-search"></i></a></li>
@@ -201,7 +202,8 @@
                                         src="../../Client/view/assets/img/<?php echo $value["hinh_anh"] ?>">
                                 </a>
                                 <ul class="product-links">
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                    <li><a href="./detail.php?id=<?php echo $value["id"] ?>"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
                                     <li><a href="#"><i class="far fa-heart"></i></a></li>
                                     <li><a href="#"><i class="fa fa-random"></i></a></li>
                                     <li><a href="#"><i class="fa fa-search"></i></a></li>

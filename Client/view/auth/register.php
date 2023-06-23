@@ -6,9 +6,6 @@
 <section class="py-5" style="background-color: #eee;margin-top: 100px;">
     <div class="container">
         <div class="row d-flex justify-content-center align-items-center">
-
-
-
             <div class="col-lg-12 col-xl-11">
                 <div class="card text-black rounded-3">
                     <div class="card-body p-md-5">

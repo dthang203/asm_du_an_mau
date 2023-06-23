@@ -1,3 +1,4 @@
+<!-- xử lý việc thêm sản phẩm vào cơ sở dữ liệu -->
 <?php
 include "../../model/config.php";
 
@@ -9,6 +10,7 @@ $productDesc = $_POST["mo_ta"];
 $productImage = $_FILES["image"]["name"];
 $id_loai_hang = $_POST["id_loai_hang"];
 echo $id_loai_hang;
+
 $query = " INSERT into hang(ten_hang, hinh_anh,gia,ngay_nhap,so_luong,mo_ta,id_loai_hang) values(
     '$productName','$productImage','$gia','$ngay_nhap','$so_luong','$productDesc','$id_loai_hang') ";
 connect($query);

@@ -2,10 +2,12 @@
     include "layout/navbar/navbar.php";
     include "../model/config.php";
     include "../model/account.php";
+    //lấy id của sản phẩm
     $id = $_GET['id'];
     $query = "select * from hang where id = $id";
     $hang = getOne($query);
     $date = date("Y-m-d");
+    //lấy danh sách các bình luận liên quan đến sản phẩm dựa trên ID
     function getcmt($id){
     $sql = "SELECT * FROM comment WHERE id_sp  ='$id'";
     return getAll($sql);
@@ -14,7 +16,7 @@
 ?>
 
 <div class="container " style="margin-top: 120px">
-    <div class="card" *ngIf="product">
+    <div class="card">
         <div class="row g-0">
             <div class="col-md-6 border-end">
                 <div class="d-flex flex-column justify-content-center">
@@ -68,6 +70,7 @@
 
 
     <!-- cmt  -->
+    <!-- kiểm tra xem người dùng đăng nhập chưa -->
     <?php if (empty($_SESSION['user'])) { ?>
     <h4 style="margin-top: 60px">Bạn cần đăng nhập để thực hiện bình luận ! <a style="margin-top: 50px; color: #f7bc3d"
             href="./auth/login.php">Đăng nhập
